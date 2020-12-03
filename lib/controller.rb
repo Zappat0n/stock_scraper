@@ -15,9 +15,7 @@ class Controller
                    'help' => proc { MyIO.puts_help } }.freeze
 
   def instruction(text)
-    arr = []
-    arr << text[0, text.index(' ')]
-    arr << text[text.index(' ') + 1..-1]
+    arr = (text.include? ' ') ? [text[0, text.index(' ')], text[text.index(' ') + 1..-1]] : [text]
     process(arr)
   end
 
@@ -39,7 +37,7 @@ class Controller
         stock = Stock.new(value.upcase)
         order.call(stock)
       else
-        process_multiple_order(order,value)
+        process_multiple_order(order, value)
       end
     else
       order.call

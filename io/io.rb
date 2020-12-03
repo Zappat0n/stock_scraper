@@ -14,6 +14,8 @@ module MyIO
     puts ' * price: Returns the price of the stock, ex: price GE'
     puts ' * diff: Returns the difference in price from the previous day, ex: diff AAPL'
     puts ' * quote: Returns the name, price and difference from yesterday of a given stock, ex: quote GOOG'
+    puts ' * finish: Ends the application'
+    puts ' * You can request multiple stocks, ex: quote NVDA,MU,BAC'
     puts
   end
 end
