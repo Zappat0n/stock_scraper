@@ -8,6 +8,7 @@ class Controller
   INSTRUCTIONS = { 'name' => proc { |stock| MyIO.puts_basic(stock.name) },
                    'price' => proc { |stock| MyIO.puts_basic(stock.price) },
                    'diff' => proc { |stock| MyIO.puts_basic(stock.diff) },
+                   'quote' => proc { |stock| MyIO.puts_basic(stock.quote) },
                    'finish' => proc { abort('Bye!') },
                    'help' => proc { MyIO.puts_help } }.freeze
 
