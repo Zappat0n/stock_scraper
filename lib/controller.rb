@@ -4,11 +4,16 @@ require_relative './stock'
 class Controller
   INSTRUCTIONS = { 'name' => proc { |stock| puts stock.name },
                    'price' => proc { |stock| puts stock.price },
-                   'finish' => proc { abort('Bye!') } }.freeze
+                   'finish' => proc { abort('Bye!') },
+                   'help' => proc { process_help } }.freeze
 
   def instruction(text)
     arr = text.strip.split(' ')
     process(arr)
+  end
+
+  def self.process_help
+    puts 'Help'
   end
 
   private
