@@ -7,7 +7,7 @@ class YahooScraper
   SEARCHES = { 'name' => 'h1[data-reactid="7"]', 'price' => 'span[data-reactid="32"]' }.freeze
 
   def initialize(quote)
-    @doc = Nokogiri::HTML(URI.open("#{ADDRESS}#{quote}"))
+    @doc = Nokogiri::HTML(URI.parse("#{ADDRESS}#{quote}").open)
   end
 
   def search(type)
