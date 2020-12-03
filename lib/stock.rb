@@ -1,4 +1,4 @@
-require_relative '../lib/yahoo_scraper'
+require_relative './yahoo_scraper'
 
 # Class to handle the stocks
 class Stock < YahooScraper
