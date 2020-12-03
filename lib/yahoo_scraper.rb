@@ -3,16 +3,21 @@ require 'open-uri'
 
 # Scraper for Yahoo finance
 class YahooScraper
+  attr_reader :doc
+
   ADDRESS = 'https://finance.yahoo.com/quote/'.freeze
-  SEARCHES = { 'name' => 'h1[data-reactid="7"]', 'price' => 'span[data-reactid="32"]' }.freeze
+  SEARCHES = { 'name' => 'h1[data-reactid="7"]',
+               'price' => 'span[data-reactid="32"]',
+               'diff' => 'span[data-reactid="33"]' }.freeze
 
   def initialize(quote)
     @doc = Nokogiri::HTML(URI.parse("#{ADDRESS}#{quote}").open)
   end
 
   def search(type)
-    line = @doc.search(SEARCHES[type]).first
-    value(line.to_s)
+    arr = @doc.search(SEARCHES[type])
+    arr = arr.size > 1 ? arr.select { |value| value.to_s.include? 'Fw(' } : arr
+    value(arr[0].to_s)
   end
 
   private

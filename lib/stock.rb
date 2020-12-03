@@ -9,4 +9,8 @@ class Stock < YahooScraper
   def price
     search('price')
   end
+
+  def diff
+    search('diff')
+  end
 end
