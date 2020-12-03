@@ -1,19 +1,18 @@
 require_relative './stock'
+require_relative '../io/io'
 
 # Process the user instructions
 class Controller
-  INSTRUCTIONS = { 'name' => proc { |stock| puts stock.name },
-                   'price' => proc { |stock| puts stock.price },
+  include MyIO
+
+  INSTRUCTIONS = { 'name' => proc { |stock| MyIO.puts_basic(stock.name) },
+                   'price' => proc { |stock| MyIO.puts_basic(stock.price) },
                    'finish' => proc { abort('Bye!') },
-                   'help' => proc { process_help } }.freeze
+                   'help' => proc { MyIO.puts_help } }.freeze
 
   def instruction(text)
     arr = text.strip.split(' ')
     process(arr)
-  end
-
-  def self.process_help
-    puts 'Help'
   end
 
   private
@@ -24,7 +23,7 @@ class Controller
     if !order.nil?
       process_order(order, arr[1])
     else
-      puts 'I do not understand this order'
+      MyIO.puts_do_not_understand
     end
   end
 
