@@ -7,7 +7,7 @@ describe YahooScraper do
     it 'Returns the value of the type searched' do
       scraper = YahooScraper.new('AMZN')
       expect(scraper.search('name')).to eq('Amazon.com, Inc. (AMZN)')
-      expect(scraper.search('price').gsub(',', '').to_f).to be_an Float
+      expect(scraper.search('price')).to be_an String
     end
   end
 end

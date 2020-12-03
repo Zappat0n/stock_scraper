@@ -1,9 +1,11 @@
 require_relative './stock'
 require_relative '../io/io'
+require 'async/await'
 
 # Process the user instructions
 class Controller
   include MyIO
+  include Async::Await
 
   INSTRUCTIONS = { 'name' => proc { |stock| MyIO.puts_basic(stock.name) },
                    'price' => proc { |stock| MyIO.puts_basic(stock.price) },
@@ -31,10 +33,21 @@ class Controller
 
   def process_order(order, value)
     if !value.nil?
-      stock = Stock.new(value.upcase)
-      order.call(stock)
+      if !(value.include? ',')
+        stock = Stock.new(value.upcase)
+        order.call(stock)
+      else
+        process_multiple_order(order,value)
+      end
     else
       order.call
+    end
+  end
+
+  async def process_multiple_order(order, values)
+    values.split(',').each do |value|
+      stock = Stock.new(value.strip.upcase)
+      order.call(stock)
     end
   end
 end
