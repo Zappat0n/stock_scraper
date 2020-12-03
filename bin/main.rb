@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require_relative '../lib/controller'
 
 @controller = Controller.new
