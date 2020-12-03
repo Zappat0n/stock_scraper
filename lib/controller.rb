@@ -1,4 +1,4 @@
-require_relative './stock.rb'
+require_relative './stock'
 
 # Process the user instructions
 class Controller
@@ -13,6 +13,8 @@ class Controller
     case arr[0].downcase
     when 'name'
       process_name(arr[1].upcase)
+    when 'finish'
+      abort('Bye!')
     end
   end
 
