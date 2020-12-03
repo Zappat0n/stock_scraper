@@ -2,6 +2,10 @@ require_relative './stock'
 
 # Process the user instructions
 class Controller
+  INSTRUCTIONS = { 'name' => proc { |stock| puts stock.name },
+                   'price' => proc { |stock| puts stock.price },
+                   'finish' => proc { abort('Bye!') } }.freeze
+
   def instruction(text)
     arr = text.strip.split(' ')
     process(arr)
@@ -10,23 +14,21 @@ class Controller
   private
 
   def process(arr)
-    case arr[0].downcase
-    when 'name'
-      process_name(arr[1].upcase)
-    when 'price'
-      process_price(arr[1].upcase)
-    when 'finish'
-      abort('Bye!')
+    order = INSTRUCTIONS[arr[0].downcase]
+
+    if !order.nil?
+      process_order(order, arr[1])
+    else
+      puts 'I do not understand this order'
     end
   end
 
-  def process_name(name)
-    stock = Stock.new(name)
-    puts stock.name
-  end
-
-  def process_price(name)
-    stock = Stock.new(name)
-    puts stock.price.to_s
+  def process_order(order, value)
+    if !value.nil?
+      stock = Stock.new(value.upcase)
+      order.call(stock)
+    else
+      order.call
+    end
   end
 end
