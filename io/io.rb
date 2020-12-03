@@ -8,6 +8,10 @@ module MyIO
     puts 'I do not understand this order'
   end
 
+  def self.puts_wrong_ticker
+    puts 'Wrong stock ticker'
+  end
+
   def self.puts_help
     puts
     puts ' * name: Returns the name of the stock, ex: name MSFT'

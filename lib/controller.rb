@@ -34,8 +34,7 @@ class Controller
   def process_order(order, value)
     if !value.nil?
       if !(value.include? ',')
-        stock = Stock.new(value.upcase)
-        order.call(stock)
+        request(order, value.strip.upcase)
       else
         process_multiple_order(order, value)
       end
@@ -46,8 +45,20 @@ class Controller
 
   async def process_multiple_order(order, values)
     values.split(',').each do |value|
-      stock = Stock.new(value.strip.upcase)
-      order.call(stock)
+      request(order, value.strip.upcase)
     end
+  end
+
+  def request(order, quote)
+    if valid?(quote)
+      stock = Stock.new(quote.strip.upcase)
+      order.call(stock)
+    else
+      MyIO.puts_wrong_ticker
+    end
+  end
+
+  def valid?(quote)
+    quote.match?(/^[[:alpha:]]+$/)
   end
 end
