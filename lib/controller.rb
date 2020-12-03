@@ -2,7 +2,7 @@ require_relative './stock'
 
 # Process the user instructions
 class Controller
-  def instuction(text)
+  def instruction(text)
     arr = text.strip.split(' ')
     process(arr)
   end
@@ -13,6 +13,8 @@ class Controller
     case arr[0].downcase
     when 'name'
       process_name(arr[1].upcase)
+    when 'price'
+      process_price(arr[1].upcase)
     when 'finish'
       abort('Bye!')
     end
@@ -21,5 +23,10 @@ class Controller
   def process_name(name)
     stock = Stock.new(name)
     puts stock.name
+  end
+
+  def process_price(name)
+    stock = Stock.new(name)
+    puts stock.price.to_s
   end
 end
