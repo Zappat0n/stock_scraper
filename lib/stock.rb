@@ -15,6 +15,6 @@ class Stock < YahooScraper
   end
 
   def quote
-    "#{name}   #{price}   #{diff}"
+    "#{name}\t\t#{price}\t\t#{diff}"
   end
 end

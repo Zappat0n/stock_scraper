@@ -15,7 +15,9 @@ class Controller
                    'help' => proc { MyIO.puts_help } }.freeze
 
   def instruction(text)
-    arr = text.strip.split(' ')
+    arr = []
+    arr << text[0, text.index(' ')]
+    arr << text[text.index(' ') + 1..-1]
     process(arr)
   end
 
