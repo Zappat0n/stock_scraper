@@ -26,10 +26,10 @@ class Controller
 
     MyIO.found_orders_in_file
     file_data.each do |value|
-      puts "* #{value}"
+      puts "\n* #{value}"
       instruction(value)
     end
-    puts '* Finished processing "orders.txt"'
+    MyIO.finished_processing_orders
   end
 
   private

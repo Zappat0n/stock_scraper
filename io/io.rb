@@ -16,6 +16,10 @@ module MyIO
     puts 'I have found some orders in "order.txt". Processing them:'
   end
 
+  def self.finished_processing_orders
+    puts "* Finished processing \"orders.txt\"\n\n"
+  end
+
   def self.puts_help
     returnval = "\n"
     returnval += " * name: Returns the name of the stock, ex: name MSFT\n"
