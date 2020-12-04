@@ -13,13 +13,14 @@ module MyIO
   end
 
   def self.puts_help
-    puts
-    puts ' * name: Returns the name of the stock, ex: name MSFT'
-    puts ' * price: Returns the price of the stock, ex: price GE'
-    puts ' * diff: Returns the difference in price from the previous day, ex: diff AAPL'
-    puts ' * quote: Returns the name, price, and difference from yesterday of a given stock, ex: quote GOOG'
-    puts ' * finish: Ends the application'
-    puts ' * You can request multiple stocks, ex: quote NVDA,MU,BAC'
-    puts
+    returnval  = "\n"
+    returnval += " * name: Returns the name of the stock, ex: name MSFT\n"
+    returnval += " * price: Returns the price of the stock, ex: price GE\n"
+    returnval += " * diff: Returns the difference in price from the previous day, ex: diff AAPL\n"
+    returnval += " * quote: Returns the name, price, and difference from yesterday of a given stock, ex: quote GOOG\n"
+    returnval += " * finish: Ends the application\n"
+    returnval += " * You can request multiple stocks, ex: quote NVDA,MU,BAC\n"
+    returnval += "\n"
+    puts returnval
   end
 end

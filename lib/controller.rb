@@ -23,30 +23,19 @@ class Controller
 
   def process(arr)
     order = INSTRUCTIONS[arr[0].downcase]
-
-    if !order.nil?
-      process_order(order, arr[1])
-    else
-      MyIO.puts_do_not_understand
-    end
+    order.nil? ? MyIO.puts_do_not_understand : process_order(order, arr[1])
   end
 
   def process_order(order, value)
     if !value.nil?
-      if !(value.include? ',')
-        request(order, value.strip.upcase)
-      else
-        process_multiple_order(order, value)
-      end
+      value.include?(',') ? process_multiple_order(order, value) : request(order, value.strip.upcase)
     else
       order.call
     end
   end
 
   async def process_multiple_order(order, values)
-    values.split(',').each do |value|
-      request(order, value.strip.upcase)
-    end
+    values.split(',').each { |value| request(order, value.strip.upcase) }
   end
 
   def request(order, quote)

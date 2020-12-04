@@ -6,8 +6,10 @@ This a stock scraper. You can get financial information about your favorite stoc
 
 ## To install and run
 
-- Clone the project repo
+- Clone the project repo from [GitHub](https://github.com/Zappat0n/stock_scraper/tree/feature-scraper) using `git clone https://github.com/Zappat0n/stock_scraper/tree/feature-scraper`
 - Make sure [Ruby-lang](https://www.ruby-lang.org/en/) is installed
+- Make sure [Bundler](https://bundler.io/) is installed
+- Install the required gems. Run `bundle install`
 - Run `ruby bin/main.rb`
 
 ## Instructions
