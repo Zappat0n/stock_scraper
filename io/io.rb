@@ -17,7 +17,7 @@ module MyIO
   end
 
   def self.puts_help
-    returnval  = "\n"
+    returnval = "\n"
     returnval += " * name: Returns the name of the stock, ex: name MSFT\n"
     returnval += " * price: Returns the price of the stock, ex: price GE\n"
     returnval += " * diff: Returns the difference in price from the previous day, ex: diff AAPL\n"
