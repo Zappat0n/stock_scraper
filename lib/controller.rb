@@ -19,6 +19,19 @@ class Controller
     process(arr)
   end
 
+  def check_file
+    file = File.open('orders.txt')
+    file_data = file.readlines.map(&:chomp)
+    return if file_data.size.zero?
+
+    MyIO.found_orders_in_file
+    file_data.each do |value|
+      puts "* #{value}"
+      instruction(value)
+    end
+    puts '* Finished processing "orders.txt"'
+  end
+
   private
 
   def process(arr)

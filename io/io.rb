@@ -12,6 +12,10 @@ module MyIO
     puts 'Wrong stock ticker'
   end
 
+  def self.found_orders_in_file
+    puts 'I have found some orders in "order.txt". Processing them:'
+  end
+
   def self.puts_help
     returnval  = "\n"
     returnval += " * name: Returns the name of the stock, ex: name MSFT\n"

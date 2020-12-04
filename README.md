@@ -25,7 +25,8 @@ The available orders are:
 - help: Lists the available orders
 - finish: Ends the application
 
-If you want to request multiple stocks you can type: `quote NVDA, MU, BAC`
+If you want to request multiple stocks you can type: `quote NVDA, MU, BAC`.
+You can preload orders adding them to "orders.txt" file, and they well be loaded when the application starts.
 
 ## Designed With
 - Ruby
